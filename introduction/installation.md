@@ -1,19 +1,19 @@
-# Waterline Installation
+# Offshore Installation
 
-Waterline is available via NPM.
+Offshore is available via NPM.
 
 ```sh
-$ npm install --save waterline
+$ npm install --save offshore
 ```
-Waterline ships without any adapters, so you will need to install these separately. For example:
+Offshore ships without any adapters, so you will need to install these separately. For example:
 
 ```sh
-$ npm install --save sails-mysql
-$ npm install --save-dev sails-memory
+$ npm install --save offshore-sql
+$ npm install --save-dev offshore-memory
 ```
 
 You can install any number of adapters into your application.
 
-The `sails-disk` and `sails-memory` adapters are common choices for development and testing.
+The `offshore-disk` and `offshore-memory` adapters are common choices for development and testing.
 
 If you are new to Node, we have a [guide](new-to-node.md) to help you get started on your preferred platform.

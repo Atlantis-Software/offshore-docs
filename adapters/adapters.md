@@ -1,18 +1,18 @@
-# Creating Adapters for Waterline
+# Creating Adapters for Offshore
 
-Adapters are the *glue* connecting waterline core to the different data stores. Adapters expose 
+Adapters are the *glue* connecting offshore core to the different data stores. Adapters expose 
 [interfaces](https://github.com/balderdashy/sails-docs/blob/master/contributing/adapter-specification.md), which imply a 
 contract to implement certain functionality. This allows us to guarantee conventional usage patterns across multiple models, 
 developers, apps, and even companies, making app code more maintainable, efficient, and reliable.
 
 ## Before writing code
 
-Waterline github page doesn't list an adapter for a particular datastore and you think it would be a good idea to create one, 
-good stuff! But before you start we recommend you [search github](https://github.com/search) for `sails-datastorename` and `waterline-datastorename`
+Offshore github page doesn't list an adapter for a particular datastore and you think it would be a good idea to create one, 
+good stuff! But before you start we recommend you [search github](https://github.com/search) for `offshore-datastorename`
 and check if a project doesn't exist already. If it does it's generally a good idea to approach the author of an existing adapter and offer
 your contribute instead of starting a new project. Most developers will welcome your help and the combined efforts will likely
 result in a better quality adapter. If one doesn't exist we recommend you create a new project and name it following the 
-convention: `sails-datastorename`.
+convention: `offshore-datastorename`.
 
 ## How to start
 
@@ -31,18 +31,18 @@ additional functionality and performance. For a comprehensive list check
 
 ## Testing
 
-Waterline provides an integration test suite named 
-[waterline-adapter-tests](https://github.com/balderdashy/waterline-adapter-tests) that can be used to test any adapter. 
+Offshore provides an integration test suite named 
+[offshore-adapter-tests](https://github.com/Atlantis-Software/offshore-adapter-tests) that can be used to test any adapter. 
 The adapter boilerplate code includes a 
 [runner.js](https://github.com/balderdashy/sails-generate-adapter/blob/master/templates/boilerplate/test/integration/runner.js) 
 which will run these tests for you requiring you only to setup the interfaces you plan to support 
-(and targeted version of Waterline) in the adapter's `package.json` file:
+(and targeted version of Offshore) in the adapter's `package.json` file:
 
 ```javascript
 {
   //...
-  "sailsAdapter": {
-    "waterlineVersion": "~0.10.0",
+  "offshoreAdapter": {
+    "offshoreVersion": "~0.0.9",
     "implements": [
       "semantic",
       "queryable",

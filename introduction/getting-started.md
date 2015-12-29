@@ -1,24 +1,24 @@
-# Getting started with Waterline
+# Getting started with Offshore
 
 To get started with Waterline, we need main two ingredients -  adapters and models.
 
-The simplest adapter to use is the `sails-memory` adapter so let's install it and Waterline in an empty directory.
+The simplest adapter to use is the `offshore-memory` adapter so let's install it and Waterline in an empty directory.
 
 ```sh
-$ npm install waterline sails-memory
+$ npm install offshore offshore-memory
 ```
 
-Now we want some sample code. Copy the code from the [`getting-started`](../examples/src/getting-started.js) into a file in the same directory where you installed the `waterline` and `sails-memory` packages.
+Now we want some sample code. Copy the code from the [`getting-started`](../examples/src/getting-started.js) into a file in the same directory where you installed the `offshore` and `offshore-memory` packages.
 
 Before we run it, let's unpack how it works.
 
 ```js
-var Waterline = require('waterline');
-var sailsMemoryAdapter = require('sails-memory');
-var waterline = new Waterline();
+var Offshore = require('offshore');
+var MemoryAdapter = require('offshore-memory');
+var offshore = new Offshore();
 ```
 
-Here we are simply bootstrapping our main objects. We are setting up the `Waterline` factory object, and instance of an adapter and an instance of `waterline` itself.
+Here we are simply bootstrapping our main objects. We are setting up the `Waterline` factory object, and instance of an adapter and an instance of `offshore` itself.
 
 Next, we define the specification for the user model, like so:
 
@@ -75,18 +75,18 @@ Most of the structure is same as for the user. However, the `owner` field specif
 Next we have some more boring setup chores.
 
 ```js
-waterline.loadCollection(userCollection);
-waterline.loadCollection(petCollection);
+offshore.loadCollection(userCollection);
+offshore.loadCollection(petCollection);
 ```
 
-Here we are adding the model specifications into the `waterline` instance itself.
+Here we are adding the model specifications into the `offshore` instance itself.
 
 And last, but not least, we have to configure the storage connections.
 
 ```js
 var config = {
 	adapters: {
-		'memory': sailsMemoryAdapter
+		'memory': MemoryAdapter
 	},
 
 	connections: {
@@ -99,10 +99,10 @@ var config = {
 
 So here we specify the `adapters` we are going to use (one for each type of storage we are going to use), and the `connections` which will usually contain connection details for the target storage system (login details, file paths, etc). Each connection can be named, and in this case we've simply settled on "default" to name the connection.
 
-Ok, it's time to actually crank things up and work with the data store. First we need to initialise the `waterline` instance, and then we can go to work.
+Ok, it's time to actually crank things up and work with the data store. First we need to initialise the `offshore` instance, and then we can go to work.
 
 ```js
-waterline.initialize(config, function (err, ontology) {
+offshore.initialize(config, function (err, ontology) {
 	if (err) {
 		return console.error(err);
 	}
@@ -136,7 +136,7 @@ waterline.initialize(config, function (err, ontology) {
 
 That's a fair chunk of code so let's unpack it slower.
 
-First we need to `initialize` the waterline instance. This wires up the connections (maybe logs into a database server or two), parses all the models looking for associations as well as a heap of other whizbangery. When that is done, it defers to the callback we passed in the second argument.
+First we need to `initialize` the offshore instance. This wires up the connections (maybe logs into a database server or two), parses all the models looking for associations as well as a heap of other whizbangery. When that is done, it defers to the callback we passed in the second argument.
 
 After checking for an error, the `ontology` variable contains the collection objects for our users and our pets, so we add some shortcuts to them in the form of `User` and `Pet`.
 
@@ -175,6 +175,6 @@ $ node getting-started.js
     id: 1 } ]
 ```
 
-Interesting. There are the attributes we gave the models, and we can also see the primary keys that were automatically generated for us. We can also see that waterline has thrown in some default `createdAt` and `updatedAt` timestamps too. Cool!
+Interesting. There are the attributes we gave the models, and we can also see the primary keys that were automatically generated for us. We can also see that offshore has thrown in some default `createdAt` and `updatedAt` timestamps too. Cool!
 
 > You can turn off the timestamps with other global or per-model configuration options.

@@ -1,4 +1,4 @@
-# Testing Waterline with automated tests
+# Testing Offshore with automated tests
 
 ## Why testing is important
 
@@ -21,7 +21,7 @@ With that in mind, there are a number of class of automated tests the a keen dev
 
 **Integration tests** are about testing chunks of code that work together as a whole, and try to simulate how the system will behave on wild, production environments. Integration tests can also be used for end-to-end testing of the application itself such as testing the request and response behaviour on a RESTful API server.
 
-The most practical of the two for Waterline are integration tests. Models are particularly difficult to model correctly using unit tests (you spend so much effort trying to mock the behaviour of the surrounding system that you might as well just use the real system).
+The most practical of the two for Offshore are integration tests. Models are particularly difficult to model correctly using unit tests (you spend so much effort trying to mock the behaviour of the surrounding system that you might as well just use the real system).
 
 ## The testing framework
 
@@ -35,7 +35,7 @@ If you are interested in code coverage, you might also like to research a tool c
 
 ## A test example.
 
-The following example illustrates how you might attempt to test a Waterline model. It assumes the following, and extremely simple, application structure:
+The following example illustrates how you might attempt to test a Offshore model. It assumes the following, and extremely simple, application structure:
 
 ```none
 root
@@ -106,7 +106,7 @@ Here we are telling Mocha to recurse into the `test` directory to find all the t
 
 Ok, here's the big one. Here's the nickel tour:
 
-The `setup` function wires up the waterline instance with our models, then initialises it. The models are using the `default` adapter and here the test is overriding the configuration to use the memory adapter. We do this because it's fast, and it might also pick up where we are trying to use "magic" in our models that might not be portable across database storages.
+The `setup` function wires up the offshore instance with our models, then initialises it. The models are using the `default` adapter and here the test is overriding the configuration to use the memory adapter. We do this because it's fast, and it might also pick up where we are trying to use "magic" in our models that might not be portable across database storages.
 
 The `teardown` function annihilates the adapters so that future tests can start with a clean slate (it allows you to safely use the `-w` option with Mocha). It does assume you are using Node 0.12. If you aren't, you'll need to use a Promise library like Bluebird or convert the method to use `async` or similar.
 
@@ -116,30 +116,30 @@ Obviously there is a lot of scope to refactor the code into a utility library as
 
 ```js
 var assert = require('assert');
-var Waterline = require('waterline');
-var sailsMemoryAdapter = require('sails-memory');
+var Offshore = require('offshore');
+var MemoryAdapter = require('offshore-memory');
 
 suite('UserModel', function () {
-	var waterline = new Waterline();
+	var offshore = new Offshore();
 	var config = {
 		adapters: {
-			'sails-memory': sailsMemoryAdapter
+			'memory': MemoryAdapter
 		},
 		connections: {
 			default: {
-				adapter: 'sails-memory'
+				adapter: 'memory'
 			}
 		}
 	}
 
 	setup(function (done) {
-		waterline.loadCollection(
-			Waterline.Collection.extend(require('../models/User.js'))
+		offshore.loadCollection(
+			Offshore.Collection.extend(require('../models/User.js'))
 		);
-		waterline.loadCollection(
-			Waterline.Collection.extend(require('../models/Pet.js'))
+		offshore.loadCollection(
+			Offshore.Collection.extend(require('../models/Pet.js'))
 		);
-		waterline.initialize(config, function  (err, ontology) {
+		offshore.initialize(config, function  (err, ontology) {
 			if (err) {
 				return done(err);
 			}
@@ -165,7 +165,7 @@ suite('UserModel', function () {
 	});
 
 	test('should be able to create a user', function () {
-		var User = waterline.collections.user;
+		var User = offshore.collections.user;
 
 		return User.create({
 				firstName: 'Neil',

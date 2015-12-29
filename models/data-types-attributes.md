@@ -1,4 +1,4 @@
-# Data Types and Attribute Properties in Waterline Models
+# Data Types and Attribute Properties in Offshore Models
 
 ## Data Types
 
@@ -28,7 +28,7 @@ on the data.
 #### defaultsTo
 
 Will set a default value on an attribute if one is not supplied when the record is created. The supplied value can also be a
-function that waterline will run while creating the record.
+function that offshore will run while creating the record.
 
 ```javascript
 attributes: {
@@ -82,7 +82,7 @@ Will create a simple index in the underlying datastore for faster queries if ava
 for simple indexes and currently doens't support compound indexes. For these you will need to create
 them yourself or use a migration.
 
-There is currently an issue with adding indexes to string fields. Because Waterline performs it's
+There is currently an issue with adding indexes to string fields. Because Offshore performs it's
 queries in a case insensitive manner we are unable to use the index on a string attribute. There are
 some workarounds being discussed but nothing is implemented so far. This will be updated in the
 near future to fully support indexes on strings.
@@ -153,5 +153,5 @@ attributes: {
 }
 ```
 
-Be warned, that Waterline may implement more keywords in the future which would conflict with any custom keywords in your application.
+Be warned, that Offshore may implement more keywords in the future which would conflict with any custom keywords in your application.
 

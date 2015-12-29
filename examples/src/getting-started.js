@@ -4,14 +4,14 @@
  * @license MIT
  */
 
-var Waterline = require('waterline');
-var sailsMemoryAdapter = require('sails-memory');
+var Offshore = require('offshore');
+var MemoryAdapter = require('offshore-memory');
 
-// Create the waterline instance.
-var waterline = new Waterline();
+// Create the offshore instance.
+var offshore = new Offshore();
 
 // Create a specification for a User model.
-var userCollection = Waterline.Collection.extend({
+var userCollection = Offshore.Collection.extend({
 	identity: 'user',
 	connection: 'default',
 	attributes: {
@@ -27,7 +27,7 @@ var userCollection = Waterline.Collection.extend({
 });
 
 // Create a specification for a Pet model.
-var petCollection = Waterline.Collection.extend({
+var petCollection = Offshore.Collection.extend({
 	identity: 'pet',
 	connection: 'default',
 	attributes: {
@@ -42,14 +42,14 @@ var petCollection = Waterline.Collection.extend({
 	}
 });
 
-// Add the models to the waterline instance.
-waterline.loadCollection(userCollection);
-waterline.loadCollection(petCollection);
+// Add the models to the offshore instance.
+offshore.loadCollection(userCollection);
+offshore.loadCollection(petCollection);
 
-// Set up the storage configuration for waterline.
+// Set up the storage configuration for offshore.
 var config = {
 	adapters: {
-		'memory': sailsMemoryAdapter
+		'memory': MemoryAdapter
 	},
 
 	connections: {
@@ -59,8 +59,8 @@ var config = {
 	}
 };
 
-// Initialise the waterline instance.
-waterline.initialize(config, function (err, ontology) {
+// Initialise the offshore instance.
+offshore.initialize(config, function (err, ontology) {
 	if (err) {
 		return console.error(err);
 	}
@@ -76,7 +76,7 @@ waterline.initialize(config, function (err, ontology) {
 		})
 		.then(function (user) {
 			// Then we can create a pet for the user.
-			// Note that waterline automatically adds the `id` primary key to the model.
+			// Note that offshore automatically adds the `id` primary key to the model.
 			Pet.create({
 				breed: 'beagle',
 				type: 'dog',
