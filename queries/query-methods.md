@@ -1,11 +1,11 @@
 # Query Methods
 
-Every model in Waterline will have a set of query methods exposed on it to allow you to interact
+Every model in Offshore will have a set of query methods exposed on it to allow you to interact
 with the database in a normalized fashion. These are known as the CRUD (Create-Read-Update-Delete)
 methods and is the primary way of interacting with your data.
 
 There are also a special set of queries known as *dynamic queries*. These are special class methods
-that are dynamically generated when you initialize Waterline. We call them dynamic finders. They
+that are dynamically generated when you initialize Offshore. We call them dynamic finders. They
 perform many of the same functions as the other class methods but you can call them directly on an
 attribute in your model.
 
@@ -35,7 +35,7 @@ User.find({ name: 'Walter Jr' })
 
 > Any string arguments passed must be the ID of the record.
 > This method will ALWAYS return records in an array.
-> If you are trying to find an attribute that is an array, you must wrap it in an additional set of brackets otherwise Waterline will think you want to perform an inQuery.
+> If you are trying to find an attribute that is an array, you must wrap it in an additional set of brackets otherwise Offshore will think you want to perform an inQuery.
 
 
 
@@ -55,7 +55,7 @@ User.findOne({ name: 'Walter Jr' })
 
 ##### Notes
 > Any string arguments passed must be the ID of the record.
-> If you are trying to find an attribute that is an array, you must wrap it in an additional set of brackets otherwise Waterline will think you want to perform an inQuery.
+> If you are trying to find an attribute that is an array, you must wrap it in an additional set of brackets otherwise Offshore will think you want to perform an inQuery.
 
 
 
@@ -156,7 +156,7 @@ User.destroy({ name: 'Flynn' })
 
 ### .query( `query`, `[data]`, `callback` )
 
-Some adapters, such as [sails-mysql](https://github.com/balderdashy/sails-mysql) and [sails-postgresql](https://github.com/balderdashy/sails-postgresql), support the `query` function which will run the provided RAW query against the database. This can sometimes be useful if you want to run complex queries and performance is very important.
+Some adapters, such as [offshore-sql](https://github.com/Atlantis-Software/offshore-sql) , support the `query` function which will run the provided RAW query against the database. This can sometimes be useful if you want to run complex queries and performance is very important.
 
 |    Description     | Accepted Data Types             | Required ? |
 |--------------------|---------------------------------|------------|
@@ -167,16 +167,11 @@ Some adapters, such as [sails-mysql](https://github.com/balderdashy/sails-mysql)
 ```javascript
 var title = "The King's Speech";
 Movie.query('SELECT * FROM movie WHERE title = $1', [title], function(err, results) {
-  // using sails-postgresql
-  console.log('Found the following movie: ', results.rows[0]);
-  
-  // using sails-mysql
   console.log('Found the following movie: ', results[0]);
 });
 ```
 
 ##### Notes
-> The type of the results returned depend on your adapter: sails-mysql returns an array of objects and sails-postgresql returns an object containing metadata and the actual results within a 'rows' array.
 > This function does currently not support promises.
 
 ## Aggregates

@@ -1,4 +1,4 @@
-# Instance and Class Methods in Waterline Models
+# Instance and Class Methods in Offshore Models
 
 * [Instance methods](#instance-methods)
   - [toObject/toJSON](#toobjecttojson)
@@ -10,7 +10,7 @@ You can attach instance methods to a model which will be available on any record
 query. These are defined as functions in your model attributes.
 
 ```javascript
-var User = Waterline.Collection.extend({
+var User = Offshore.Collection.extend({
 
   identity: 'user',
   connection: 'local-postgresql',
@@ -36,7 +36,7 @@ you to override the toJSON() method in your model.
 Example of filtering a password in your model definition:
 
 ```javascript
-var User = Waterline.Collection.extend({
+var User = Offshore.Collection.extend({
 
   identity: 'user',
   connection: 'local-postgresql',
@@ -58,13 +58,13 @@ var User = Waterline.Collection.extend({
 ## Class Methods
 
 "Class" methods are functions available at the top level of a model. They can be called anytime after
-a Waterline instance has been initialized.
+a Offshore instance has been initialized.
 
 These are useful if you would like to keep model logic in the model and have reusable functions
 available.
 
 ```javascript
-var Foo = Waterline.Collection.extend({
+var Foo = Offshore.Collection.extend({
 
   identity: 'foo',
   connection: 'my-local-postgresql',

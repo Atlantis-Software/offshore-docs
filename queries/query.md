@@ -1,6 +1,6 @@
-# Waterline Query Interface
+# Offshore Query Interface
 
-The Waterline Query Interface allows you to interact with your models the same way no matter which
+The Offshore Query Interface allows you to interact with your models the same way no matter which
 adapter they are using. This means you can use the same query language whether your data lives in
 MySQL, MongoDB, Twitter, etc.
 
@@ -18,7 +18,7 @@ See [Query Methods](query-methods.md) for more information on their use.
 
 ## Query Language
 
-Waterline exposes a normalized language for finding records no matter which data store the records
+Offshore exposes a normalized language for finding records no matter which data store the records
 live in. The following options are available on all `find` and `findOne` queries.
 
 Each option will return an instance of the deferred object used to create the query so each option

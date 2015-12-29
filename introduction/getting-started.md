@@ -1,8 +1,8 @@
 # Getting started with Offshore
 
-To get started with Waterline, we need main two ingredients -  adapters and models.
+To get started with Offshore, we need main two ingredients -  adapters and models.
 
-The simplest adapter to use is the `offshore-memory` adapter so let's install it and Waterline in an empty directory.
+The simplest adapter to use is the `offshore-memory` adapter so let's install it and Offshore in an empty directory.
 
 ```sh
 $ npm install offshore offshore-memory
@@ -18,12 +18,12 @@ var MemoryAdapter = require('offshore-memory');
 var offshore = new Offshore();
 ```
 
-Here we are simply bootstrapping our main objects. We are setting up the `Waterline` factory object, and instance of an adapter and an instance of `offshore` itself.
+Here we are simply bootstrapping our main objects. We are setting up the `Offshore` factory object, and instance of an adapter and an instance of `offshore` itself.
 
 Next, we define the specification for the user model, like so:
 
 ```js
-var userCollection = Waterline.Collection.extend({
+var userCollection = Offshore.Collection.extend({
 	identity: 'user',
 	connection: 'default',
 	attributes: {
@@ -52,7 +52,7 @@ The `attributes` define the properties of the model. In a traditional database, 
 Obviously we now need to define what a pet is.
 
 ```js
-var petCollection = Waterline.Collection.extend({
+var petCollection = Offshore.Collection.extend({
 	identity: 'pet',
 	connection: 'default',
 	attributes: {
@@ -146,7 +146,7 @@ We will use some Promise goodness to create a user and a pet and see what we can
 
 First, we use the `create` method to create a new user. We just need to supply the attibutes for our user, and we'll get back a copy of the record that was created.
 
-> Note that by default, Waterline adds an `id` primary key for you, unless you specifically tell it not to.
+> Note that by default, Offshore adds an `id` primary key for you, unless you specifically tell it not to.
 
 Next we create a new pet, but we can use the `id` of the user that was created in the previous step to associate with the pet. We do this by setting the `owner` field directly.
 

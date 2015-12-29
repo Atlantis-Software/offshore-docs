@@ -1,5 +1,5 @@
 /**
- * A really simple Waterline application.
+ * A really simple Offshore application.
  *
  * @license MIT
  */

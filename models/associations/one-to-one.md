@@ -4,13 +4,13 @@ A one-to-one association states that a model may only be associated with one oth
 for the model to know which other model it is associated with a foreign key must be included in the
 record.
 
-Waterline uses the concept of a `model` attribute to indicate that a record should store a reference
+Offshore uses the concept of a `model` attribute to indicate that a record should store a reference
 to another model. Whenever this attribute is found a `foreignKey` will be built up in the underlying
 schema to handle the association.
 
 ```javascript
 // A user may only have a single pet
-var User = Waterline.Collection.extend({
+var User = Offshore.Collection.extend({
 
   identity: 'user',
   connection: 'local-postgresql',
@@ -27,7 +27,7 @@ var User = Waterline.Collection.extend({
 });
 
 // A Pet may have multiple users
-var Pet = Waterline.Collection.extend({
+var Pet = Offshore.Collection.extend({
 
   identity: 'pet',
   connection: 'local-postgresql',
@@ -48,7 +48,7 @@ We can change this and associate the `Pet` with exactly one `User` and the `User
 
 ```javascript
 // A user may only have a single pet
-var User = Waterline.Collection.extend({
+var User = Offshore.Collection.extend({
 
   identity: 'user',
   connection: 'local-postgresql',
@@ -64,7 +64,7 @@ var User = Waterline.Collection.extend({
   }
 });
 
-var Pet = Waterline.Collection.extend({
+var Pet = Offshore.Collection.extend({
 
   identity: 'pet',
   connection: 'local-postgresql',
@@ -152,7 +152,7 @@ These one-to-one relationships will also work if you're using a legacy database.
 
 In this example, PetBiz prefixes all of their tables and fields with `pb_`. So the Pet model becomes:
 ```javascript
-var Pet = Waterline.Collection.extend({
+var Pet = Offshore.Collection.extend({
 
   identity: 'pet',
   connection: 'local-postgresql',
@@ -185,7 +185,7 @@ var Pet = Waterline.Collection.extend({
 ```
 Meanwhile, the `User` would look something like this:
 ```javascript
-var User = Waterline.Collection.extend({
+var User = Offshore.Collection.extend({
 
   identity: 'user',
   connection: 'local-postgresql',

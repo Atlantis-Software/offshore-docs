@@ -11,7 +11,7 @@ association is used to populate the records.
 
 ```javascript
 // A user may have many pets
-var User = Waterline.Collection.extend({
+var User = Offshore.Collection.extend({
 
   identity: 'user',
   connection: 'local-postgresql',
@@ -29,7 +29,7 @@ var User = Waterline.Collection.extend({
 });
 
 // A pet may only belong to a single user
-var Pet = Waterline.Collection.extend({
+var Pet = Offshore.Collection.extend({
 
   identity: 'pet',
   connection: 'local-postgresql',

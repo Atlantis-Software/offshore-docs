@@ -1,4 +1,4 @@
-# Integrating Waterline in Sails.js
+# Integrating Offshore in Sails.js
 
 ## Notes for models
 

@@ -1,4 +1,4 @@
-# Waterline Models
+# Offshore Models
 
 Models represent a structure of data which requires persistent storage. The data may live in any
 data-store but is interfaced in the same way. This allows your users to live in PostgreSQL and your
@@ -25,7 +25,7 @@ data without relying on any one type of database.
 ## How to define a model
 
 Model definitions contain `attributes`, `validations`, `instance methods`, `lifecycle callbacks`
-and `class methods`. To define a model you will extend the `Waterline.Collection` object and add
+and `class methods`. To define a model you will extend the `Offshore.Collection` object and add
 in your own `attributes` and methods.
 
 By default an attribute named `id` will be automatically added to your model which will contain
@@ -37,7 +37,7 @@ Each model will also get two timestamp attributes added by default: `createdAt` 
 will track when a record went into the datastore and when it was last updated.
 
 ```javascript
-var Person = Waterline.Collection.extend({
+var Person = Offshore.Collection.extend({
 
   // Identity is a unique name for this model and must be in lower case
   identity: 'person',
@@ -63,7 +63,7 @@ You can also set options for each attribute. These include `validations` and any
 properties.
 
 ```javascript
-var Person = Waterline.Collection.extend({
+var Person = Offshore.Collection.extend({
 
   identity: 'person',
   connection: 'local-postgresql',
@@ -112,7 +112,7 @@ It is **extremely important** to set the `migrate` property to `safe` in your mo
 In this example, the WB Company has prefixed all of their fields with `wb_`. You'll notice that you can use the `tableName` attribute, but also `columnName` in the `attributes` object.
 
 ```javascript
-var Widget = Waterline.Collection.extend({
+var Widget = Offshore.Collection.extend({
   identity: 'wbwidget',
   connection: 'wb-widget-database',
   tableName: 'wb_widgets',

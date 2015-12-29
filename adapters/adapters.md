@@ -1,8 +1,7 @@
 # Creating Adapters for Offshore
 
 Adapters are the *glue* connecting offshore core to the different data stores. Adapters expose 
-[interfaces](https://github.com/balderdashy/sails-docs/blob/master/contributing/adapter-specification.md), which imply a 
-contract to implement certain functionality. This allows us to guarantee conventional usage patterns across multiple models, 
+[interfaces](interfaces.md), which imply a contract to implement certain functionality. This allows us to guarantee conventional usage patterns across multiple models, 
 developers, apps, and even companies, making app code more maintainable, efficient, and reliable.
 
 ## Before writing code
@@ -27,7 +26,7 @@ are inline comments explaining what each method does and what is expected to ret
 
 These are the main methods to support the `Semantic` interface, yet there are a few more interfaces you can implement for
 additional functionality and performance. For a comprehensive list check 
-[Adapter Interface Reference](https://github.com/balderdashy/sails-docs/blob/master/contributing/adapter-specification.md).
+[Adapter Interface Reference](interfaces.md).
 
 ## Testing
 

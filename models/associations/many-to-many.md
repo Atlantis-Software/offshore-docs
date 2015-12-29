@@ -4,14 +4,14 @@ A many-to-many association states that a model can be associated with many other
 Because both models can have many related models a new join table will need to be created to keep track
 of these relations.
 
-Waterline will look at your models and if it finds that two models both have collection attributes that
+Offshore will look at your models and if it finds that two models both have collection attributes that
 point to each other, it will automatically build up a join table for you.
 
 Because you may want a model to have multiple many-to-many associations on another model a `via` key
 is needed on the `collection` attribute. This states which `model` attribute on the one side of the
 association is used to populate the records.
 
-You will also need to add a `dominant` property on one side of the association. This allows Waterline
+You will also need to add a `dominant` property on one side of the association. This allows Offshore
 to know which side it can write the joinTable to in the case of different connections.
 
 Using the `User` and `Pet` example lets look at how to build a schema where a `User` may have many
@@ -19,7 +19,7 @@ Using the `User` and `Pet` example lets look at how to build a schema where a `U
 
 ```javascript
 // A user may have many pets
-var User = Waterline.Collection.extend({
+var User = Offshore.Collection.extend({
 
   identity: 'user',
   connection: 'local-postgresql',
@@ -38,7 +38,7 @@ var User = Waterline.Collection.extend({
 });
 
 // A pet may have many owners
-var Pet = Waterline.Collection.extend({
+var Pet = Offshore.Collection.extend({
 
   identity: 'pet',
   connection: 'local-postgresql',

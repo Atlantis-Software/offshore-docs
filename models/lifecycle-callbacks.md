@@ -19,7 +19,7 @@ lifecycle callback.
 ```javascript
 var bcrypt = require('bcrypt');
 
-var User = Waterline.Collection.extend({
+var User = Offshore.Collection.extend({
 
   identity: 'user',
   connection: 'local-postgresql',
@@ -68,7 +68,7 @@ need to make sure that the record concerns a person of interest. You might want 
 `Probable_suspects` model.
 
 ```javascript
-var User = Waterline.Collection.extend({
+var User = Offshore.Collection.extend({
 
   identity: 'user',
   connection: 'local-postgresql',
@@ -110,7 +110,7 @@ You want to update a cache to remove a record after it has been destroyed. To do
 the `afterDestroy` lifecycle callback.
 
 ```javascript
-var User = Waterline.Collection.extend({
+var User = Offshore.Collection.extend({
 
   identity: 'user',
   connection: 'local-postgresql',

@@ -1,3 +1,3 @@
-# Integrating Waterline with other frameworks
+# Integrating Offshore with other frameworks
 
 * [Sails](sails.md)

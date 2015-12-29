@@ -1,11 +1,11 @@
-# Validations in Waterline Models
+# Validations in Offshore Models
 
-Validations are handled by [Anchor](https://github.com/balderdashy/anchor) which is based off of
+Validations are handled by [offshore-validator](https://github.com/Atlantis-Software/offshore-validator) which is based off of
 [Node Validate](https://github.com/chriso/validator.js) and supports most of the properties in
-node-validate. For a full list of validations see: [Anchor Validations](https://github.com/balderdashy/anchor/blob/master/lib/match/rules.js).
+node-validate. For a full list of validations see: [offshore-validator Validations](https://github.com/Atlantis-Software/offshore-validator/blob/master/lib/match/rules.js).
 
 Validations are defined directly in your Collection attributes. In addition you may set the attribute
-type to any supported Anchor type and Waterline will build a validation and set the schema type as
+type to any supported Offshore-validator type and Offshore will build a validation and set the schema type as
 a string for that attribute.
 
 Validation rules may be defined as simple values or functions (both sync and async) that return the
@@ -176,7 +176,7 @@ and compare values to other attributes. This allows you to move validation busin
 models and out of your controller logic.
 
 ```javascript
-var User = Waterline.Collection.extend({
+var User = Offshore.Collection.extend({
   types: {
     point: function(latlng){
       return latlng.x && latlng.y
@@ -214,7 +214,7 @@ var User = Waterline.Collection.extend({
 
 ## Ignored Properties
 
-If you want to build custom functionality on top of Waterline models and you need to define custom model attribute properties, the Waterline validations will probably throw an error. If you know what you're doing, you can tell Waterline to ignore certain properties and not run validations for them (so this is different from custom validations).
+If you want to build custom functionality on top of Offshore models and you need to define custom model attribute properties, the Offshore validations will probably throw an error. If you know what you're doing, you can tell Offshore to ignore certain properties and not run validations for them (so this is different from custom validations).
 
 Example model:
 ```javascript
