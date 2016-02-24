@@ -101,6 +101,15 @@ User.find()
 .exec(function(err, users) {});
 ```
 
+```javascript
+// Deep Population
+User.find()
+.populate('foo.bar', { name: 'foo' }) //populate foo into user and bar into foo
+.exec(function(err, users) {
+  console.log(users[0].foo.bar.name) // 'foo'
+});
+```
+
 ### .limit()
 
 `limit` will restrict the number of records returned by the query.
