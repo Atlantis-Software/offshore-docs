@@ -192,3 +192,31 @@ method in the chain.
 User.find()
 .exec(function(err, users) {});
 ```
+
+### .cache()
+
+`cache` will temporary store the query's result to increase performance of next calls and replace `exec` method. It should be the last method in the chain.
+
+|     Description     | Accepted Data Types | Required ? |
+|---------------------|---------------------|------------|
+|  cacheKey           |      `string`       | No         |
+|  cacheTime          |      `int`          | No         |
+|  Callback           |      `function`     | Yes        |
+
+`cacheKey:`  a developer defined unique key string for the query (optional)  
+`cacheTime:` the cache duration in ms (0 for unlimited, optional)  
+`callback:` a callback function  
+
+```javascript
+// user defined cacheKey and cacheTime
+User.find()
+.cache('AllUsers', 1800, function(err, users) {});
+
+// automatic cacheKey
+User.find()
+.cache(1800, function(err, users) {});
+
+// automatic cacheKey and default cacheTime
+User.find()
+.cache(function(err, users) {});
+```
