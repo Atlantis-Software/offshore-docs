@@ -135,3 +135,23 @@ Adapters which implement the SQL interface interact with databases supporting th
 
 + `Adapter.query(query,[ data,] cb)`
 
+## Datastore (interface)
+
+> ##### Stability: [1](http://nodejs.org/api/documentation.html#documentation_stability_index) - Experimental
+
+Adapters which implement the Datastore interface provides access to a list of key/value pairs, which are sometimes called items. Keys are strings, characters `\ / : * ? " < > |` are not allowed.
+
+###### Adapter methods
+
++ `Adapter.getDatastore(options, cb)` method return a datastore instance in callback.
+
+###### Datastore methods
+
++ `Datastore.set(key, value, cb)` method must first check if a key/value pair with the given key already exists in the list associated with the object.  
+If it does not, then a new key/value pair must be added to the list, with the given key and with its value set to value.  
+If the given key does exist in the list, and its value is not equal to value, then it must have its value updated to value. If its previous value is equal to value, then the method must do nothing.  
+If it couldn't set the new value, the method must return an Error in callback.  
+
++ `Datastore.get(key, cb)` method must return the current value associated with the given key. If the given key does not exist in the list associated with the object then this method must return a `new Error('404')` error in callback.
+
++ `Datastore.remove(key, cb)` method must cause the key/value pair with the given key to be removed from the list associated with the object, if it exists. If no item with that key exists, the method must do nothing.
