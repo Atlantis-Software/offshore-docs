@@ -135,11 +135,11 @@ Adapters which implement the SQL interface interact with databases supporting th
 
 + `Adapter.query(query,[ data,] cb)`
 
-## KVP (interface)
+## Datastore (interface)
 
 > ##### Stability: [1](http://nodejs.org/api/documentation.html#documentation_stability_index) - Experimental
 
-Adapters which implement the KVP provides access to a list of key/value pairs, which are sometimes called items. Keys are strings.
+Adapters which implement the Datastore interface provides access to a list of key/value pairs, which are sometimes called items. Keys are strings.
 Characters `\ / : * ? " < > |` are not allowed in keys.
 
 ###### Adapter methods
