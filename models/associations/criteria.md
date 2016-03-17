@@ -1,5 +1,7 @@
 # Association Criteria
 
+like models themselves, theirs associations could have a criteria key.
+
 ## Example Ontology
 
 ```javascript
