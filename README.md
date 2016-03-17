@@ -15,6 +15,7 @@
     - [Many-to-many](models/associations/many-to-many.md)
     - [Many-to-many through](models/associations/many-to-many-through.md)
     - [Dominance](models/associations/dominance.md)
+    - [Criteria](models/associations/criteria.md)
   * [Instance & Class Methods](models/instance-class-methods.md)
   * [Configuration](models/configuration.md)
 * [Queries](queries/query.md)
