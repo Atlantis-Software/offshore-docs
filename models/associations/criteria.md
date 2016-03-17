@@ -1,6 +1,6 @@
 # Association Criteria
 
-like models themselves, theirs associations could have a criteria key.
+like models themselves, theirs associations could have a criteria key to define in which case a the collection or model should be associated.
 
 ## Example Ontology
 
