@@ -152,4 +152,4 @@ Property | Value | Default | Description
 `autoPK` | `boolean` | `true` | Automatically add an `id` attribute to the model to be the primary key.
 `autoCreatedAt` | `date` | Current time | Automatically add a `createdAt` date attribute to the model.
 `autoUpdatedAt` | `date` | The created time | Automatically add a `updatedAt` date attribute to the model.
-
+`criteria` | `object` | - | Criteria to apply each related queries

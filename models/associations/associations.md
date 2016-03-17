@@ -13,4 +13,4 @@ how to setup and query associated data.
 * [Many-to-many](many-to-many.md)
 * [Many-to-many through](many-to-many-through.md)
 * [Dominance](dominance.md)
-
+* [Criteria](criteria.md)
