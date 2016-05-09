@@ -204,7 +204,7 @@ User.find()
 |  Callback           |      `function`     | Yes        |
 
 `cacheKey:`  a developer defined unique key string for the query (optional)  
-`cacheTime:` the cache duration in ms (0 for unlimited, optional)  
+`cacheTime:` the cache duration in seconds (0 for unlimited, optional)  
 `callback:` a callback function  
 
 ```javascript
