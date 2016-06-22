@@ -21,6 +21,7 @@
 * [Queries](queries/query.md)
   * [Query Language](queries/query-language.md)
   * [Query Methods](queries/query-methods.md)
+* [Transactions](transaction/transactions.md)
 * [Adapters](adapters/adapters.md)
 * [Testing](testing/testing.md)
 * [Integration](integration/integration.md)
