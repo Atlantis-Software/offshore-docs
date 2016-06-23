@@ -161,7 +161,7 @@ If it couldn't set the new value, the method must return an Error in callback.
 
 > ##### Stability: [1](http://nodejs.org/api/documentation.html#documentation_stability_index) - Experimental
 
-Adapters implementing the transactable interface can initiate transactions with databases supporting it.
+Adapters implementing the transactable interface can initiate transactions with databases.
 
 ###### Adapter methods
 
