@@ -1,17 +1,17 @@
 # Transactions
 
-Transactions are an important feature of relational databases, as they allow correct recovery from failures and keep a database consistent even in cases of system failure. All queries within a transaction are executed on the same database connection, and run the entire set of queries as a single unit of work. Any failure will mean the database will rollback any queries executed on that connection to the pre-transaction state. 
+Transactions are an important feature of databases, as they allow correct recovery from failures and keep a database consistent even in cases of system failure. An Offshore transaction can concern multiple databases (as long as they have an adapter implementing the transacting interface) and all queries within it are executed as a single unit of work. Any failure will mean the databases will rollback any queries executed on that transaction to the pre-transaction state.
 
 ## How to initialize a transaction
 
 Transactions are initialized through Offshore.Transaction() :
 
-### .Transaction( `listCollections`, `callback` )
+### .Transaction( `collections`, `callback` )
 
-|    Description     |                     Accepted Data Types                              | Required ? |
-|--------------------|----------------------------------------------------------------------|------------|
-|   listCollections  |   Collection Object or array of Collections                          |   Yes      |
-|     callback       |   function -> first arg is a transaction object, second is callback  |   Yes      |
+| Description | Types | Description | Required ? |
+|    :---:    | :---: |    :---:    |    :---:   |
+| collections | Collection Object or array of Collections | Given collections must be already loaded and initialized by Offshore | Yes |
+| callback | function | First argument is a transaction object, second argument is callback | Yes |
 
 
 ```javascript
@@ -20,17 +20,16 @@ Offshore.Transaction([User, Pet], function(trx, cb) {
 })
 ```
 
-## How to use a transaction object
+## How to use transactions
 
 Once created, the transaction object contains all the collections it was initialized with.
-They can be used like any other Collection object, the only difference being that they can only
-be used with defered (i.e. with an .exec call) : 
+They can be used like any other Collection object : 
 
 ```javascript
 Offshore.Transaction([User, Pet], function(trx, cb) {
 	trx.user.create({name: 'Bob'}).exec(function(err, myUser) {
-		trx.pet.create([{type: 'cat', owner: myUser.id}, {type: 'dog', owner: myUser.id}]).exec(function(err, userPets) {
-
+		trx.pet.create([{type: 'cat', owner: myUser.id}, {type: 'dog', owner: myUser.id}],
+		function(err, userPets) {
 
 		});
 	});
@@ -49,7 +48,8 @@ Offshore.Transaction([User, Pet], function(trx, cb) {
 			// if error, rollback
       			cb(err);
     		}
-		trx.pet.createEach([{type: 'cat', owner: myUser.id}, {type: 'dog', owner: myUser.id}]).exec(function(err, userPets) {
+		trx.pet.createEach([{type: 'cat', owner: myUser.id}, {type: 'dog', owner: myUser.id}])
+		.exec(function(err, userPets) {
 			if (err) {
 				// if error, rollback
       				cb(err);
