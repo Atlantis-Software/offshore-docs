@@ -1,17 +1,17 @@
 # Transactions
 
-Transactions are an important feature of databases, as they allow correct recovery from failures and keep a database consistent even in cases of system failure. An Offshore transaction can concern multiple databases (as long as they have an adapter implementing the transacting interface) and all queries within it are executed as a single unit of work. Any failure will mean the databases will rollback any queries executed on that transaction to the pre-transaction state.
+Transactions are an important feature of databases, as they allow correct recovery from failures and keep a database consistent even in cases of system failure. An Offshore transaction can concern multiple databases (as long as they have an adapter implementing the 'transactable' interface) and all queries within it are executed as a single unit of work. Any failure will mean the databases will rollback any queries executed on that transaction to the pre-transaction state.
 
 ## How to initialize a transaction
 
 Transactions are initialized through Offshore.Transaction() :
 
-### .Transaction( `collections`, `callback` )
+### .Transaction( `collections`, `handler` )
 
-| Description | Types | Description | Required ? |
-|    :---:    | :---: |    :---:    |    :---:   |
-| collections | Collection Object or array of Collections | Given collections must be already loaded and initialized by Offshore | Yes |
-| callback | function | First argument is a transaction object, second argument is callback | Yes |
+| Description | Types | Description |
+|    :---:    | :---: |    :---:    |
+| collections | Object or array | Take a single Collection object or an array of Collection objects. Given collections must be already loaded and initialized by Offshore |
+| handler | function | First argument is the returned transaction object, second argument is transaction callback |
 
 
 ```javascript
