@@ -54,7 +54,7 @@ Offshore.Transaction([User, Pet], function(trx, cb) {
 				// if error, rollback
       				cb(err);
     			}
-			// Commit
+			// commit
 			cb(null, userPets);
 		});
 	});
