@@ -10,7 +10,7 @@ Transactions are initialized through Offshore.Transaction() :
 
 | Description | Types | Description |
 |    :---:    | :---: |    :---:    |
-| collections | Object or array | Take a single Collection object or an array of Collection objects. Given collections must be already loaded and initialized by Offshore |
+| collections | Object or array | Take a single Collection object or an array of Collection objects. Given Collections must be already loaded and initialized by Offshore |
 | handler | function | First argument is the returned transaction object, second argument is transaction callback |
 
 
