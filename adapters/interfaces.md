@@ -163,6 +163,9 @@ If it couldn't set the new value, the method must return an Error in callback.
 
 Adapters implementing the transactable interface can initiate transactions with databases supporting it.
 
+In a transaction, all methods of the `Semantic` interface use the transaction name instead
+of the connection name.
+
 ###### Adapter methods
 
 + `Adapter.registerTransaction(connection, collections, cb)` method must take a connection name and an array of collections, create a transaction connection and return its name through the callback. If one of the arguments is invalid or if there is an error during the transaction creation, the method must return an Error in callback.
