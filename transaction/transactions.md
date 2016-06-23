@@ -1,6 +1,6 @@
 # Transactions
 
-Transactions are an important feature of databases, as they allow correct recovery from failures and keep a database consistent even in cases of system failure. An Offshore transaction can concern multiple databases (as long as they have an adapter implementing the 'transactable' interface) and all queries within it are executed as a single unit of work. Any failure will mean the databases will rollback any queries executed on that transaction to the pre-transaction state.
+Transactions are an important feature of databases, as they allow correct recovery from failures and keep a database consistent even in cases of system failure. An Offshore transaction can concern multiple databases (as long as they have an adapter implementing the `transactable` interface) and all queries within it are executed as a single unit of work. Any failure will mean the databases will rollback any queries executed on that transaction to the pre-transaction state.
 
 ## How to initialize a transaction
 
