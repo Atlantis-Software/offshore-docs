@@ -155,3 +155,16 @@ If it couldn't set the new value, the method must return an Error in callback.
 + `Datastore.get(key, cb)` method must return the current value associated with the given key. If the given key does not exist in the list associated with the object then this method must return a `new Error('404')` error in callback.
 
 + `Datastore.remove(key, cb)` method must cause the key/value pair with the given key to be removed from the list associated with the object, if it exists. If no item with that key exists, the method must do nothing.
+
+
+## Transactable (interface)
+
+Adapters implementing the transactable interface can initiate transactions with databases supporting it.
+
+###### Adapter methods
+
++ `Adapter.registerTransaction(connection, collections, cb)` method must take a connection name and an array of collections, create a transaction connection and return its name through the callback. If one of the arguments is invalid or if there is an error during the transaction creation, the method must return an Error in callback.
+
++ `Adapter.commit(trxId, collections, cb)` : method must take a transaction name and an array of collections and commit the corresponding transaction. If an error is encountered while commiting, the method must return an Error through the callback, else it must return nothing.
+
++ `Adapter.rollback(trxId, collections, cb)` : method must take a transaction name and an array of collections and rollback the corresponding transaction. If an error is encountered while rollbacking, the method must return an Error through the callback, else it must return nothing.
