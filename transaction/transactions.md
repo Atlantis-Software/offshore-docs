@@ -16,7 +16,7 @@ Transactions are initialized through Offshore.Transaction() :
 
 ```javascript
 Offshore.Transaction([User, Pet], function(trx, cb) {
-	// trx is your transaction
+  // trx is your transaction
 });
 ```
 
@@ -27,12 +27,12 @@ They can be used like any other Collection object :
 
 ```javascript
 Offshore.Transaction([User, Pet], function(trx, cb) {
-	trx.user.create({name: 'Bob'}).exec(function(err, myUser) {
-		trx.pet.create([{type: 'cat', owner: myUser.id}, {type: 'dog', owner: myUser.id}],
-		function(err, userPets) {
+  trx.user.create({name: 'Bob'}).exec(function(err, myUser) {
+    trx.pet.create([{type: 'cat', owner: myUser.id}, {type: 'dog', owner: myUser.id}],
+    function(err, userPets) {
 
-		});
-	});
+    });
+  });
 });
 ```
 
@@ -43,30 +43,30 @@ Offshore.Transaction() can be chained with an .exec().
 
 ```javascript
 require = ('Offshore');
- // And initialize it with its collections
+// And initialize it with its collections
 
 // Once Offshore is initialized, you can begin
 
 Offshore.Transaction([User, Pet], function(trx, cb) {
-	trx.user.create({name: 'Bob'}).exec(function(err, myUser) {
-		if (err) {
-			// if error, rollback
-    	cb(err);
+  trx.user.create({name: 'Bob'}).exec(function(err, myUser) {
+    if (err) {
+      // if error, rollback
+      cb(err);
     }
-		trx.pet.createEach([{type: 'cat', owner: myUser.id}, {type: 'dog', owner: myUser.id}])
-		.exec(function(err, userPets) {
-			if (err) {
-				// if error, rollback
-      	cb(err);
-    	}
-			// commit
-			cb(null, userPets);
-		});
-	});
+    trx.pet.createEach([{type: 'cat', owner: myUser.id}, {type: 'dog', owner: myUser.id}])
+    .exec(function(err, userPets) {
+      if (err) {
+        // if error, rollback
+        cb(err);
+      }
+      // commit
+      cb(null, userPets);
+    });
+  });
 }).exec(function(err, trxResult) {
-    	if (err) {
-      	// err will contain the error you passed in the callback
-    	}
-	// trxResult contains userPets
+    if (err) {
+      // err will contain the error you passed in the callback
+    }
+    // trxResult contains userPets
 });
 ```
