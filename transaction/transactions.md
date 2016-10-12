@@ -64,9 +64,9 @@ Offshore.Transaction([User, Pet], function(trx, cb) {
     });
   });
 }).exec(function(err, trxResult) {
-    if (err) {
-      // err will contain the error you passed in the callback
-    }
-    // trxResult contains userPets
+  if (err) {
+    // err will contain the error you passed in the callback
+  }
+  // trxResult contains userPets
 });
 ```
