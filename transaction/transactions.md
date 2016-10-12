@@ -53,6 +53,7 @@ Offshore.Transaction([User, Pet], function(trx, cb) {
       // if error, rollback
       cb(err);
     }
+
     trx.pet.createEach([{type: 'cat', owner: myUser.id}, {type: 'dog', owner: myUser.id}])
     .exec(function(err, userPets) {
       if (err) {
